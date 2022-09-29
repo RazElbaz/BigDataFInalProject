@@ -2,14 +2,14 @@ const { all } = require("mathjs");
 
 let iceCream_now = [];
 var Ice_cream_flavor=['chocolate','vanilla','strawberry','lemon','halvah']
-var city=['Ashdod','Tel Aviv','Haifa','Ramat Gan','Eilat','Ashkelon','Sderot','Netanya','Herzliya','Petah Tiqwa','Beer Sheva','Holon', 'Lod','Ramla','Yavne','Arad','Ness Ziona','Jerusalem','Ariel','Dimona']
+var city=['Ashdod','Tel Aviv','Haifa','Ramat Gan','Eilat','Ashkelon','Sderot','Netanya','Herzliya','Petah Tiqwa','Beer Sheva','Holon', 'Lod','Ramla','Yavne','Hadera','Ness Ziona','Jerusalem','Ariel','Dimona']
 var branch=['Golda','Vanilla','Ben & Jerrys','Deli cream','Jetlek']
 //probability to choose some flavor
 var probability = [0.6, 0.1, 0.1, 0.1,0.1];
 module.exports.simulator = function(cb){
     setInterval(function(){ Simulator_sales(cb)},1500)
 }
-
+let cityWeather= 'ashdod';
 function Simulator_sales(sd){    
         var sales_data = {};
         /*
@@ -74,34 +74,61 @@ function Simulator_sales(sd){
         sales_data.season=getCurrentSeason();
 
         //weather
-        //https://www.npmjs.com/package/weather-js
-        //npm i weather-js
-        var weather = require('weather-js');
+        // //https://www.npmjs.com/package/weather-js
+        // //npm i weather-js
+        // var weather = require('weather-js');
  
 
-        weather.find({search: '${sales_data.city},israel', degreeType: 'c'}, function(err, result) {
-        if(err) console.log(err);
+        // weather.find({search: '${sales_data.city},israel', degreeType: 'c'}, function(err, result) {
+        // if(err) console.log(err);
         
-        //console.log(JSON.stringify(result, null, 1));
-        var temp=result[0]['current']['temperature'];
-        if(temp<10){
-            sales_data.today_weather="very cold";
-        }
-        else if(temp<20){
-            sales_data.today_weather="cold";
-        }
-        else if(temp<25){
-            sales_data.today_weather="pleasant weather";
-        }
-        else if(temp<30){
-            sales_data.today_weather="hot";
-        }
-        else if(temp<40){
-            sales_data.today_weather="very hot";
-        }
-        });
+        // //console.log(JSON.stringify(result, null, 1));
+        // var temp=result[0]['current']['temperature'];
+        // var Weather=null;
+
+        //https://codeburst.io/build-a-simple-weather-app-with-node-js-in-just-16-lines-of-code-32261690901d
+        //npm install request --save
+        let request = require('request');
+        var apiKey = '1ccd75dbf6a83f162518db512af12bc3'; 
         
-        
+        let url = `http://api.openweathermap.org/data/2.5/weather?q=${sales_data.city}&units=metric&appid=${apiKey}`
+        var temp=0;
+
+        request(url, function (err, response, body) {
+          // if(err){
+          //   console.log('error:', error);
+          // } else {
+            let weather = JSON.parse(body)
+            let message = `It's ${weather.main.temp} degrees in ${weather.name}!`
+          
+            temp=parseInt(weather.main.temp);
+            console.log(temp);
+            if(temp<10){
+              console.log(temp);
+              cityWeather="very cold";
+            }
+            else if(temp<20){
+              cityWeather="cold";
+              console.log(temp);
+            }
+            else if(temp<25){
+              cityWeather="pleasant weather";
+              console.log(temp);
+            }
+            else if(temp<30){
+              cityWeather="hot";
+              console.log(temp);
+            }
+            else if(temp<40){
+              cityWeather="very hot";
+              console.log(temp);
+            }
+            
+          }
+        );
+        sales_data.today_weather=cityWeather;
+        console.log(sales_data.today_weather);
+      
         sd(sales_data);
     }
 
