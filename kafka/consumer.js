@@ -1,6 +1,7 @@
 const uuid = require("uuid");
 const Kafka = require("node-rdkafka");
 
+//Kafka details to connection
 const kafkaConf = {
     "group.id": "cloudkarafka-example",
     "metadata.broker.list": "dory-01.srvs.cloudkafka.com:9094,dory-02.srvs.cloudkafka.com:9094, dory-03.srvs.cloudkafka.com:9094".split(","),
@@ -13,10 +14,10 @@ const kafkaConf = {
   };
   
   const prefix = "bik2bf96-";
-  const topic = `${prefix}test`; // send to this topic
+  const topic = `${prefix}test`; // send the events to this topic
   const producer = new Kafka.Producer(kafkaConf);
   
-  const genMessage = m => new Buffer.alloc(m.length,m);
+  const genMessage = data => new Buffer.alloc(data.length,data);
 
 const topics = [topic];
 const consumer = new Kafka.KafkaConsumer(kafkaConf, {
@@ -32,11 +33,16 @@ consumer.on("ready", function(arg) {
   consumer.consume();
 });
 
-//------------ Consume new data------------
-consumer.on("data", function(m) {
-    console.log("data "+m.value.toString());
+//Consume new data
+consumer.on("data", function(data) {
+    console.log("data "+data.value.toString());
 
 });
+//Prints to stdout with newline
+consumer.on('event.log', function(log) {
+  console.log(log);
+});
+//The process.exit() method instructs Node.js to terminate the process synchronously with an exit status of code
 consumer.on("disconnected", function(arg) {
   process.exit();
 });
@@ -44,7 +50,5 @@ consumer.on('event.error', function(err) {
   console.error(err);
   process.exit(1);
 });
-consumer.on('event.log', function(log) {
-   console.log(log);
-});
+
 consumer.connect();

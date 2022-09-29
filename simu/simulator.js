@@ -1,6 +1,10 @@
 const { all } = require("mathjs");
 
-let iceCream_now = [];
+
+//A callback function is in another scope so we'll create a global variable that will hold the weather for the city in this event
+let cityWeather= '';
+// //for create random events
+// let iceCream_now = [];
 var Ice_cream_flavor=['chocolate','vanilla','strawberry','lemon','halvah']
 var city=['Ashdod','Tel Aviv','Haifa','Ramat Gan','Eilat','Ashkelon','Sderot','Netanya','Herzliya','Petah Tiqwa','Beer Sheva','Holon', 'Lod','Ramla','Yavne','Hadera','Ness Ziona','Jerusalem','Ariel','Dimona']
 var branch=['Golda','Vanilla','Ben & Jerrys','Deli cream','Jetlek']
@@ -9,7 +13,7 @@ var probability = [0.6, 0.1, 0.1, 0.1,0.1];
 module.exports.simulator = function(cb){
     setInterval(function(){ Simulator_sales(cb)},1500)
 }
-let cityWeather= 'ashdod';
+
 function Simulator_sales(sd){    
         var sales_data = {};
         /*
@@ -95,39 +99,39 @@ function Simulator_sales(sd){
         var temp=0;
 
         request(url, function (err, response, body) {
-          // if(err){
-          //   console.log('error:', error);
-          // } else {
+          if(err){
+            console.log('error:', error);
+          } else {
             let weather = JSON.parse(body)
             let message = `It's ${weather.main.temp} degrees in ${weather.name}!`
           
             temp=parseInt(weather.main.temp);
-            console.log(temp);
+            //console.log(temp);
             if(temp<10){
-              console.log(temp);
+              //console.log(temp);
               cityWeather="very cold";
             }
             else if(temp<20){
               cityWeather="cold";
-              console.log(temp);
+              //console.log(temp);
             }
             else if(temp<25){
               cityWeather="pleasant weather";
-              console.log(temp);
+              //console.log(temp);
             }
             else if(temp<30){
               cityWeather="hot";
-              console.log(temp);
+              //console.log(temp);
             }
             else if(temp<40){
               cityWeather="very hot";
-              console.log(temp);
+              //console.log(temp);
             }
             
-          }
+          }}
         );
         sales_data.today_weather=cityWeather;
-        console.log(sales_data.today_weather);
+        //console.log(sales_data.today_weather);
       
         sd(sales_data);
     }
