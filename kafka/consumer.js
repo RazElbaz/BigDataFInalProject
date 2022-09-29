@@ -1,9 +1,5 @@
 const uuid = require("uuid");
 const Kafka = require("node-rdkafka");
-// const bigML = require("../bigML/bigML");
-// const mongoConnection = require("../mongoDB/mongoDB");
-// const redisSender = require("../redis/RedisSender");
-//------------ Kafka details to connection------------
 
 const kafkaConf = {
     "group.id": "cloudkarafka-example",
@@ -38,9 +34,6 @@ consumer.on("ready", function(arg) {
 
 //------------ Consume new data------------
 consumer.on("data", function(m) {
-//   mongoConnection.ConnectTodb(m.value.toString(), 1);//Upload data to mongoDB
-//   redisSender.sendDataToRedis(m.value.toString());
-//   bigML.bigmlprediction(m.value.toString());
     console.log("data "+m.value.toString());
 
 });
