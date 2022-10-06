@@ -5,7 +5,7 @@ const { all } = require("mathjs");
 let cityWeather= '';
 // //for create random events
 // let iceCream_now = [];
-var Ice_cream_flavor=['chocolate','vanilla','strawberry','lemon','halvah']
+var Ice_cream_flavor=['chocolate','vanilla','strawberry','lemon','halva']
 var city=['Ashdod','Tel Aviv','Haifa','Ramat Gan','Eilat','Ashkelon','Sderot','Netanya','Herzliya','Petah Tiqwa','Beer Sheva','Holon', 'Lod','Ramla','Yavne','Hadera','Ness Ziona','Jerusalem','Ariel','Dimona']
 var branch=['Golda','Vanilla','Ben & Jerrys','Deli cream','Jetlek']
 //probability to choose some flavor
@@ -49,23 +49,6 @@ function Simulator_sales(sd){
         }
         sales_data.special_day =isSpecialDay;
 
-        //Random
-        // if( sales_data.Ice_cream_lavor == 'lemon' || sales_data.Ice_cream_lavor == 'halvah'){
-        //     sales_data.special_day = false;
-        // }
-        // else {
-        //     sales_data.special_day = Math.random() < 0.5;
-        // }
-        //     sales_data.week_day = Math.floor(Math.random() * 7) + 1;
-        // function randomDate(start, end) {
-        //     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-        // }
-        // var _date = randomDate(new Date(2022, 0, 1), new Date());
-        // sales_data.date = _date.getDate() + '-' + (_date.getMonth() + 1) + '-' + _date.getFullYear();
-
-        // sales_data.hour_in = Math.floor(Math.random() * 24) + 1;
-        // sales_data.hour_out = Math.floor(Math.random() * 24) + 1;
-
         //Time
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDate
         var date=new Date();//The getDate() method returns the day of the month for the specified date according to local time.
@@ -78,18 +61,6 @@ function Simulator_sales(sd){
         sales_data.season=getCurrentSeason();
 
         //weather
-        // //https://www.npmjs.com/package/weather-js
-        // //npm i weather-js
-        // var weather = require('weather-js');
- 
-
-        // weather.find({search: '${sales_data.city},israel', degreeType: 'c'}, function(err, result) {
-        // if(err) console.log(err);
-        
-        // //console.log(JSON.stringify(result, null, 1));
-        // var temp=result[0]['current']['temperature'];
-        // var Weather=null;
-
         //https://codeburst.io/build-a-simple-weather-app-with-node-js-in-just-16-lines-of-code-32261690901d
         //npm install request --save
         let request = require('request');
