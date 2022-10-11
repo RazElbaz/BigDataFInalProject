@@ -23,6 +23,7 @@ function Simulator_sales(sd){
         sales_data.city = city[(Math.random() * city.length) | 0];
         //the same as the previous random array r of size 5
         sales_data.branch = branch[(Math.random() * branch.length) | 0];
+        sales_data.amount=(Math.floor(Math.random() * 10) + 1)/10 ;//kilo
         sales_data.Ice_cream_flavor = getRandomFlavor();
         //special day
         var isSpecialDay=false;
