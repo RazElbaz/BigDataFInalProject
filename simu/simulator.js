@@ -26,29 +26,30 @@ function Simulator_sales(sd){
         sales_data.amount=(Math.floor(Math.random() * 10) + 1)/10 ;//kilo
         sales_data.Ice_cream_flavor = getRandomFlavor();
         //special day
-        var isSpecialDay=false;
-        /*
-        for *not* Jewish
-        https://www.npmjs.com/package/date-holidays
-        npm i date-holidays
-        */
-        var Holidays = require('date-holidays');
-        var hd = new Holidays();
-        isSpecialDay= hd.isHoliday(new Date());
+        var isSpecialWeek=false;
         /*
         for Jewish
         https://github.com/hebcal/hebcal-js
         npm install hebcal
         */
-        if(isSpecialDay==false){
-            var Hebcal = require('hebcal');
-            var day = new Hebcal.HDate(new Date());
-           
-            if(day.holidays().length>0){
-                isSpecialDay=true;
-            }
+        var Hebcal = require('hebcal');
+        var date=new Date().getDay()+1;
+        for(var i=1;i<date;i++){
+              const day = new Hebcal.HDate(new Date());
+              day.setDate(day.getDate() -i);
+              if(day.holidays().length>0){
+                  isSpecialWeek=true;
+              }
         }
-        sales_data.special_day =isSpecialDay;
+        for(var i=date;i<8;i++){
+              const day = new Hebcal.HDate(new Date());
+              day.setDate(day.getDate() -date +i);
+                if(day.holidays().length>0){
+                  isSpecialWeek=true;
+              }
+        }
+
+        sales_data.special_week =isSpecialWeek;
 
         //Time
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDate
