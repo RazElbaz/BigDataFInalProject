@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row justify-content-center border-bottom">
+            <%- include("../partials/button_card", ML_card) %>
+        </div>
+        <div class="row justify-content-center border-bottom">
+            <!-- Ice cream flavor consumption card -->
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title-center">Ice Cream Flavor Consumption Prediction</h4>
+                    <p class="card-category text-center">Checking ice cream flavor consumption prediction at the selected store</p>
+                </div>
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <% dropdown_cards.forEach(function(card) { %>
+                            <%- include("../partials/dropdown_card", card) %>
+                        <% }); %>
+                    </div>
+                    <div class="row justify-content-center">
+                        <%- include("../partials/calendar") %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center border-bottom">
+            <p style="color: red">Day: , Month: , Season: , Holiday: , Weather: ,Settlement-Size: ,Population-Type: ,
+            Children: , Seniors: , Adults: Middle-Age: Elderly:</p>
+            <p style="color: #0b75c9"> The ice cream consumption forecast on Friday 3/27 is average</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-chart bg-dark">
+        <div class="card-body mx-auto">
+            <select id="<%= selectID %>" data-live-search="true" data-container="body" class="form-control selectpicker show-tick" name="tick1" data-live-search-normalize="true" data-live-search-style="startsWith">
+                <option Value="" hidden selected="selected"><%= title %></option>
+                <% rows.forEach(function(row){ %>
+                    <option value="<%= row %>"><%= row %></option>
+                <% }) %>
+            </select>
+        </div>
+    </div>
+</div>

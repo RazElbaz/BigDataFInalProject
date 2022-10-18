@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%- include("../partials/headers") %>
+    <script src="/ejs.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/infoCards.js"></script>
+</head>
+
+<body class="" onload="setWs();">
+  <div class="wrapper">
+    <%- include("../partials/sidebar") %>
+      <div class="main-panel">
+        <%- include("../partials/navbar") %>
+          <div class="content">
+            <div class="container-fluid">
+             <div class="row">
+                 <div class="col-sm-8">
+                      <div class="row" id = "info">
+                          <% info_cards.forEach(function(card) { %>
+                              <%- include("../partials/info_card", card) %>
+                          <% }); %>
+                      </div>
+                      <div class="row" id = "pie-chart">
+                          <%- include("../partials/pie_chart", pieChart) %>
+                      </div>
+                </div>
+                <div class="col-sm-4" id = "flavor">
+                    <%- include("../partials/flavors_amount_card", flavor_card) %>
+                </div>
+             </div>
+            </div>
+          </div>
+          <%- include("../partials/footer") %>
+      </div>
+  </div>
+  <%- include("../partials/dashcode") %>
+</body>
+
+</html>

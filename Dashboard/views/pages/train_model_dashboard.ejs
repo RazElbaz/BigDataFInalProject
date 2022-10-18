@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include("../partials/headers") %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/trainDash.js"></script>
+</head>
+
+<body class="" onload="setWs()">
+<div class="wrapper ">
+    <%- include("../partials/sidebar") %>
+    <div class="main-panel">
+        <%- include("../partials/navbar") %>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <%- include("../partials/ML_card", ML_card) %>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <%- include("../partials/flavors_amount_card", flavor_card) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("../partials/footer") %>
+    </div>
+</div>
+<%- include("../partials/dashcode") %>
+</body>
+
+</html>

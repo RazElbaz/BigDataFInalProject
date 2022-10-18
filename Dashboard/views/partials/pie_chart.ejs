@@ -1,0 +1,38 @@
+<div class="col-lg-12 col-md-12">
+    <div class="card">
+        <div class="card-header card-header-warning">
+            <h4 class="card-title-center">Total Net Amount Pie Chart</h4>
+        </div>
+        <div class="card-body ct-chart mx-auto">
+            <canvas id="pieChart" width="400" height="400" style="max-width: 500px;"></canvas>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+            <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+            <script src="/socket.io/socket.io.js"></script>
+            <script type="text/javascript">
+                //pie
+                const ctxP = document.getElementById('pieChart').getContext('2d');
+                const myPieChart = new Chart(ctxP, {
+                    type: 'pie',
+                    data: {
+                        labels: <%- JSON.stringify(pieChart.pieChart_labels); %>,
+                        datasets: [{
+                            data: <%- JSON.stringify(pieChart.pieChart_data); %>,
+                            backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                        }]
+                    },
+                    options: {
+                        plugins: {
+                            labels: {
+                                render: 'percentage',
+                                fontColor: 'white',
+                                precision: 2
+                            }
+                        }
+                    }
+
+                });
+            </script>
+        </div>
+    </div>
+</div>

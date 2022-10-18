@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include("../partials/headers") %>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/storesDash.js"></script>
+</head>
+
+<body class="" onload="setWs()">
+<div class="wrapper ">
+    <%- include("../partials/sidebar") %>
+    <div class="main-panel">
+        <%- include("../partials/navbar") %>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <% dropdown_cards.forEach(function(card) { %>
+                                <%- include("../partials/dropdown_card", card) %>
+                            <% }); %>
+                        </div>
+                        <div class="row">
+                            <%- include("../partials/line_chart", lineChart) %>
+                        </div>
+                        <div class="row">
+                            <%- include("../partials/bar_chart", barChart) %>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <%- include("../partials/flavors_amount_card", flavor_card) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("../partials/footer") %>
+    </div>
+</div>
+<%- include("../partials/dashcode") %>
+</body>
+
+</html>
