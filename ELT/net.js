@@ -1,12 +1,10 @@
-const server = require('net').createServer();
+const net = require('net');
 
-server.on('connection', socker => {
-    console.log('Client connect');
-    socker.write('Welcome new Client!\n');
-    socket.on('data', data =>{
-        socket.write(data);
+const server = net.createServer(function (socket) {
+    socket.on('data', (data) => {
+        const string = data.toString()
+        console.log(string);
     });
-
 });
 
-server.listen(5000, () => console.log('Server bound'));
+server.listen(5000, () => console.log('Server listening on port 5000...'));

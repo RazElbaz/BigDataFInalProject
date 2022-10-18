@@ -3,7 +3,7 @@
 // Don't run the all code all the time - produce a model ONCE and use for predictions from now on
 // Look for an asyc version.
 
-var bigml = require('bigml');
+const bigml = require('bigml');
 // replace the username and the API KEY of your own
 var connection = new bigml.BigML('YUVALBM3','1b1f123cee5c3dd7e506bcffeff464147e7e22de')
 
