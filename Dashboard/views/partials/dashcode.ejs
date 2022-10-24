@@ -287,7 +287,9 @@
                 url: `/dashboard/stores/api/${storeName}/${flavor}`,
                 type: "GET"
             }).done(function (response) {
-                console.log("res " + response)
+                console.log("res " + response['response'])
+                myLineChart.data.datasets[0].data = response['response']
+                myLineChart.update()
             }).fail(function (response) {
                 console.log(response)
             }).always(function () {
@@ -299,13 +301,15 @@
 
 <!-- Train model button functionality -->
 <script>
+
     $("#train_model").click(function() {
+
         console.log('Clicked train model button...')
         $.ajax({
             url: `/dashboard/train_model/api/train_model`,
-            type: "GET"
+            type: "POST"
         }).done(function (response) {
-            console.log("res " + response)
+            console.log("res " + response['response'])
         }).fail(function (response) {
             console.log(response)
         })

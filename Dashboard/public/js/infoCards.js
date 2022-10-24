@@ -8,7 +8,7 @@ function setWs() {
         } catch (e) {
             console.log(e);
         }
-        console.log(dataJSON['special_day'] + ' ' + dataJSON['season'] + ' ' + dataJSON['Ice_cream_flavor'] + ' ' + dataJSON['amount'])
+        console.log(dataJSON['special_week'] + ' ' + dataJSON['season'] + ' ' + dataJSON['Ice_cream_flavor'] + ' ' + dataJSON['amount'])
         const seasons = {"winter": "חורף", "spring": "אביב", "summer": "קיץ", "autumn": "סתיו"}
         const flavorsIndexMap = {"chocolate": 0, "vanilla": 1, "strawberry": 2, "lemon": 3, "halva": 4}
 
@@ -17,7 +17,7 @@ function setWs() {
                    <div class="card card-chart bg-dark">
                      <div class="card-body">
                          <h2 class="card-title-center">האם חג קרוב השבוע</h2>
-                         <h4 class="card-title-center">${dataJSON['special_day'] === true ? "כן" : "לא"}</h4>
+                         <h4 class="card-title-center">${dataJSON['special_week'] === true ? "כן" : "לא"}</h4>
                       </div>
                    </div>
                </div>

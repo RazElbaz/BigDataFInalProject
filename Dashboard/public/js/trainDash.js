@@ -8,7 +8,7 @@ function setWs() {
         } catch (e) {
             console.log(e);
         }
-        console.log(dataJSON['special_day'] + ' ' + dataJSON['season'] + ' ' + dataJSON['Ice_cream_flavor'] + ' ' + dataJSON['amount'])
+        console.log(dataJSON['special_week'] + ' ' + dataJSON['season'] + ' ' + dataJSON['Ice_cream_flavor'] + ' ' + dataJSON['amount'])
 
         // Update ice cream flavor amount in the flavor card
         console.log(document.getElementById(dataJSON['Ice_cream_flavor']).innerHTML + '-' + dataJSON['amount'])
