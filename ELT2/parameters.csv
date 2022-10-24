@@ -1,8 +1,0 @@
-"city","branch","amount","Ice_cream_flavor","special_week","month","day","hour","minute","season","today_weather"
-"Haifa","Vanilla",0.6,"chocolate",true,10,4,4,37,"autumn","cold"
-"Ashkelon","Golda",0.4,"lemon",true,10,4,6,50,"autumn","hot"
-"Ramla","Ben & Jerrys",0.5,"chocolate",true,10,4,6,50,"autumn","hot"
-"Holon","Vanilla",0.2,"halva",true,10,4,6,50,"autumn","hot"
-"Tel Aviv","Deli cream",0.1,"chocolate",true,10,4,6,50,"autumn","hot"
-"Yavne","Jetlek",0.6,"lemon",true,10,4,6,50,"autumn","hot"
-"Hadera","Vanilla",0.5,"chocolate",true,10,4,6,50,"autumn","hot"

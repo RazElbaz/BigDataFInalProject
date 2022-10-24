@@ -1,2 +1,0 @@
-mongodb key:
-mongodb+srv://yuvalbm:<password>@bigdataproject.wztpjci.mongodb.net/?retryWrites=true&w=majority
