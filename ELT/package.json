@@ -1,0 +1,23 @@
+{
+  "name": "bigdatathirdsubsystem",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bigml": "^1.25.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "fs": "0.0.1-security",
+    "http-errors": "~1.6.3",
+    "json2csv": "^5.0.7",
+    "mongoose": "^5.13.15",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "node-rdkafka": "^2.14.0",
+    "pug": "2.0.0-beta11"
+  }
+}
