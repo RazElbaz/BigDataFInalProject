@@ -1,0 +1,25 @@
+{
+  "name": "simu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "date-holidays": "^3.16.7",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "hebcal": "^2.3.2",
+    "http-errors": "~1.6.3",
+    "mathjs": "^11.2.1",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11",
+    "request": "^2.88.2",
+    "uuid": "^9.0.0",
+    "weather-js": "^2.0.0"
+  }
+}

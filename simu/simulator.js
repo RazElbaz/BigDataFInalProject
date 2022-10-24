@@ -6,8 +6,7 @@ let cityWeather= '';
 // //for create random events
 // let iceCream_now = [];
 var Ice_cream_flavor=['chocolate','vanilla','strawberry','lemon','halva']
-var city=['Jerusalem', 'Tel Aviv - Yafo', 'Haifa', 'Rishon LeZiyyon', 'Petah Tiqwa', 'Netanya', 'Ashdod', 'Bene Beraq', "Be'er Sheva", 'Holon', 'Ramat Gan', 'Ashqelon', 'Bet Shemesh', 'Rehovot', 'Bat Yam', 'Herzliyya', 'Hadera', 'Kefar Sava', "Modi'in-Makkabbim-Re'ut", 'Lod', "Modi'in Illit", "Ra'annana", 'Ramla', 'Nazareth', 'Rahat', 'Rosh HaAyin', 'Hod HaSharon', 'Betar Illit', 'Nahariyya', 'Qiryat Gat', "Giv'atayim", 'Qiryat Atta', 'Afula', 'Umm al-Fahm', 'Yavne', 'Elat', 'Akko', 'Nes Ziyyona', "El'ad", 'Ramat HaSharon', 'Tiberias', 'Qiryat Motzkin', "Karmi'el", 'Tayibe', 'Netivot', 'Pardes Hanna-Karkur', 'Qiryat Bialik', 'Nof HaGalil', "Shefar'am", 'Qiryat Ono', 'Qiryat Yam', 'Or Yehuda', 'Zefat', "Ma'ale Adummim", 'Dimona', 'Tamra', 'Ofaqim', 'Sakhnin', 'Sederot', 'Harish', 'Yehud-Monoson', 'Baqa Al-Gharbiyye', 'Gedera', "Be'er Ya'aqov", 'Kefar Yona', "Giv'at Shemu'el", 'Tirat Karmel', 'Arad', 'Tire', 'Arrabe', 'Migdal HaEmeq', "Ar'ara", "Qiryat Mal'akhi", 'Mevasseret Ziyyon', 'Kafar Qasem', 'Gan Yavne', 'Hura', "Yoqne'am Illit", "Zikhron Ya'aqov", 'Qalansawe', 'Kafar Kanna', 'Mughar', 'Nesher', 'Kuseife', 'Ganne Tiqwa', 'Qadima- Zoran', 'Tel Sheva', 'Qiryat Shemona', "Ma'alot-Tarshiha", 'Shoham', 'Judeide-Maker', 'Kafar Manda', "Giv'at Ze'ev", 'Or Aqiva', "Ar'ara-BaNegev", 'Kafar Qara', "Ari'el", 'Yafi', 'Reine', "Qiryat Tiv'on"]
-var branch=['Golda','Vanilla','Ben & Jerrys','Deli cream','Jetlek']
+var city=['Jerusalem', 'Tel Aviv', 'Haifa', 'Rishon LeZiyyon', 'Petah Tiqwa', 'Netanya', 'Ashdod', 'Bene Beraq', "Be'er Sheva", 'Holon', 'Ramat Gan', 'Ashkelon', 'Bet Shemesh', 'Rehovot', 'Bat Yam', 'Herzliyya', 'Hadera', 'Kefar Sava', "Modiin", 'Lod', "Modi'in Illit", "Raanana", 'Ramla', 'Nazareth', 'Rahat', 'Rosh HaAyin', 'Hod HaSharon', 'Betar Illit', 'Nahariyya', 'Qiryat Gat', "Givatayim", 'Qiryat Ata', 'Afula', 'Umm el Fahm', 'Yavne', 'Elat', 'Akko', 'Ness Ziona', "Elad", 'Ramat HaSharon', 'Tiberias', 'Qiryat Motzkin', "Karmi'el", 'Taibe', 'Netivot', 'Pardes Hana-Karkur', 'Qiryat Bialik', 'Nazerat Illit', "Shefaram", 'Qiryat Ono', 'Qiryat Yam', 'Or Yehuda', 'Zefat', "Maale Adomim", 'Dimona', 'Tamra', 'Ofaqim', 'Sakhnin', 'Sederot', 'Harish', 'Yehud', 'Baqa Al-Gharbiyye', 'Gedera', "Beer Yaaqov", 'Kefar Yona', "Givat Shemuel", 'Tirat Karmel', 'Arad', 'Tira', 'Arrabe', 'Migdal HaEmeq', "Arara", "Kiryat Malachi", 'Mevaseret Tsiyon', 'Kfar Kasim', 'Gan Yavne', 'Hura', "Yoqneam Illit", "Zichron Ya'akov", 'Kalanswa', 'Kfar Kanna', 'Maghar', 'Nesher', 'Kseifa', 'Ganei Tikva', 'Kadima', 'Daliyat Al-Karmel', 'Qiryat Shemona', "Maalot Tarshiha", 'Shoham', 'Yirka', 'Kafar Manda', "Givat Zeev", 'Or Akiva', "Ar'ara BaNegev", 'Kfar Kara', "Ariel", 'Yafia', 'Reina', "Qiryat Tivon"]
 //probability to choose some flavor
 var probability = [0.6, 0.1, 0.1, 0.1,0.1];
 module.exports.simulator = function(cb){
@@ -21,8 +20,8 @@ function Simulator_sales(sd){
         Math.random() generates floating number,so to float to int,using Bitwise OR(|)
         */
         sales_data.city = city[(Math.random() * city.length) | 0];
+
         //the same as the previous random array r of size 5
-        sales_data.branch = branch[(Math.random() * branch.length) | 0];
         sales_data.amount=(Math.floor(Math.random() * 10) + 1)/10 ;//kilo
         sales_data.Ice_cream_flavor = getRandomFlavor();
         //special day
@@ -66,16 +65,17 @@ function Simulator_sales(sd){
         //https://codeburst.io/build-a-simple-weather-app-with-node-js-in-just-16-lines-of-code-32261690901d
         //npm install request --save
         let request = require('request');
-        var apiKey = '1ccd75dbf6a83f162518db512af12bc3'; 
-        
+        var apiKey = '1ccd75dbf6a83f162518db512af12bc3';
+
+        console.log(`city: ${sales_data.city}`)
         let url = `http://api.openweathermap.org/data/2.5/weather?q=${sales_data.city}&units=metric&appid=${apiKey}`
         var temp=0;
-
         request(url, function (err, response, body) {
           if(err){
-            console.log('error:', error);
+            console.log('error:', err);
           } else {
             let weather = JSON.parse(body)
+            console.log(weather)
             let message = `It's ${weather.main.temp} degrees in ${weather.name}!`
           
             temp=parseInt(weather.main.temp);

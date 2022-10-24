@@ -1,4 +1,3 @@
-const uuid = require("uuid");
 const Kafka = require("node-rdkafka");
 const {setFlavorAmount} = require('../Dashboard/models/stores')
 
@@ -13,11 +12,11 @@ const kafkaConf = {
     "sasl.password": "4AcnrUolr7guCOa9CTYHHanC5dZmugEb",
     "debug": "generic,broker,security"
   };
-  
+
   const prefix = "bik2bf96-";
   const topic = `${prefix}test`; // send the events to this topic
   const producer = new Kafka.Producer(kafkaConf);
-  
+
   const genMessage = data => new Buffer.alloc(data.length,data);
 
 const topics = [topic];
@@ -42,7 +41,8 @@ exports.init = (io) => {
 
         // Update redis db with new store's stock amount
         const dataJSON = JSON.parse(data.value.toString())
-        setFlavorAmount(`${dataJSON['city']}-${dataJSON['branch']}`, dataJSON['Ice_cream_flavor'], dataJSON['amount'])
+        setFlavorAmount(dataJSON['city'], dataJSON['Ice_cream_flavor'], dataJSON['amount'])
+            .catch((err) => console.log(err))
     });
 }
 //Prints to stdout with newline
