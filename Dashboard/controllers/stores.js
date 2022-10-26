@@ -9,6 +9,7 @@ const {
 
 const {getWeeklyPrediction, getPredictionPromise} = require('../bigmlPrediction')
 const bigml = require("bigml");
+const fetch = require("node-fetch");
 
 const flavorsList = ["Chocolate", "Vanilla", "Strawberry", "Lemon", "Halva"]
 const flavorsListCard = ["chocolate", "vanilla", "strawberry", "lemon", "halva"]
@@ -76,7 +77,21 @@ const getWeeklyConsumptionPrediction = async (req, res) => {
     for (let i = 0; i < 7; i++) {
         const date = `${baseDate.getDate()}-${baseDate.getMonth() + 1}-${baseDate.getFullYear()}`;
         console.log(date)
-        const prediction_value = await getPredictionPromise(modelResourceKey, storeName, flavor, date);
+
+        // request
+        let fetchObj = await fetch(`http://localhost:5000/api/v1/additional_info/${storeName}`);
+        if (!fetchObj.ok) throw new Error(`Error! status: ${fetchObj.status}`);
+        const additionalInfoJSON = await fetchObj.json();
+
+        let fetchObj2 = await fetch(`http://localhost:5000/api/v1/city_details/${storeName}`);
+        if (!fetchObj2.ok) throw new Error(`Error! status: ${fetchObj2.status}`);
+        const cityInfoJSON = await fetchObj2.json();
+
+        const concatJSON = Object.assign({"city": storeName, "flavor": flavor, "date": date}, additionalInfoJSON['reponse'],
+            {'population_size': cityInfoJSON['reponse']['population_size'], 'population_type': cityInfoJSON['reponse']['population_type']})
+        console.log(concatJSON)
+
+        const prediction_value = await getPredictionPromise(modelResourceKey, concatJSON);
         weekPredictions.push(prediction_value);
         baseDate.setDate(baseDate.getDate() + 1);
     }

@@ -8,7 +8,7 @@ const createSale = async (saleJSON) => {
     schemaSaleJSON['amount'] = saleJSON['amount'];
     schemaSaleJSON['flavor'] = saleJSON['Ice_cream_flavor'];
     schemaSaleJSON['holiday_weak'] = saleJSON['special_week'];
-    schemaSaleJSON['date'] = `${saleJSON['day']}-${saleJSON['month']}-2022`;
+    schemaSaleJSON['date'] = `${saleJSON['day']}-${saleJSON['month']}-${saleJSON['year']}`;
     schemaSaleJSON['season'] = saleJSON['season'];
     schemaSaleJSON['weather'] = saleJSON['today_weather'];
 
@@ -55,8 +55,17 @@ const getAllSales = async () => {
     return sales;
 }
 
+const removeAllSales = async () => {
+    try {
+        await Sale.remove({});
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 
 module.exports = {
     createSale,
-    getAllSales
+    getAllSales,
+    removeAllSales
 }

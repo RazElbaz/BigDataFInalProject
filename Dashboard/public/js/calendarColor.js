@@ -44,15 +44,16 @@ const dateSelectedEvent = (selectedDate) => {
     const flavor = flavor_select.options[flavor_select.selectedIndex].text;
 
     if (flavor != null && storeName != null && flavor != 'Select Flavor' && storeName != 'Select Store') {
-
         $.ajax({
             url: `/dashboard/train_model/api/${storeName}/${flavor}/${selectedDateFormat}`,
             type: "GET"
         }).done(function (response) {
             console.log("res " + response)
             let consumptionRate = [response['response']].map(getConsumptionRating)
-            document.getElementById("prediction_paragraph").innerText = `Day: ${dayName}, Month: ${monthName}, Season: , Holiday: , Weather: ,Settlement-Size: ,Population-Type: ,
-            Children: , Seniors: , Adults: Middle-Age: Elderly:`;
+            const additionalData = response['show_data'];
+            document.getElementById("prediction_paragraph").innerText = `Day: ${dayName}, Month: ${monthName}, Season: ${additionalData['season']}, Holiday: ${additionalData['holiday_weak']}, Weather: ${additionalData['weather']}, Settlement-Size: ${additionalData['population_size']}, Population-Type: ${additionalData['population_type']},
+            Children: ${additionalData['precentage_age_0_5']}, Seniors: ${additionalData['precentage_age_6_18']}, Adults: ${additionalData['precentage_age_19_45']}
+             Middle-Age: ${additionalData['precentage_age_46_55']}, Elderly: ${additionalData['precentage_age_56_64']} ,65+: ${additionalData['precentage_age_65_plus']}`;
             // Update result paragraph
             document.getElementById("prediction_result").innerText = `The ice cream consumption forecast on ${dayName} ${day}/${month} is ${consumptionRate}`;
         }).fail(function (response) {

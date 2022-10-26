@@ -45,13 +45,12 @@ const getWeeklyPrediction = async (req, res, modelResourceKey, storeName, flavor
     })
 }
 
-const getPredictionPromise = (modelResourceKey, storeName, flavor, date) => {
+const getPredictionPromise = (modelResourceKey, inputData) => {
     return new Promise((resolve, reject) => {
         source.get(modelResourceKey, function (error, modelInfo) {
             if (!error && modelInfo) {
                 var prediction = new bigml.Prediction(connection);
-                prediction.create(modelInfo,
-                    {"city": storeName, "flavor": flavor, "date": date},
+                prediction.create(modelInfo, inputData,
                     function (error, prediction) {
                         console.log(prediction.code);
                         console.log(prediction.object.output);

@@ -8,9 +8,11 @@ const PORT = 5000;
 
 const trainModelRouter = require('./routes/tainModel');
 const cityDetailsRouter = require('./routes/cityPredictionInfo')
+const additionalInfoRouter = require('./routes/additionalInfo')
 
 app.use('/api/v1/train_model', trainModelRouter);
 app.use('/api/v1/city_details', cityDetailsRouter);
+app.use('/api/v1/additional_info', additionalInfoRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

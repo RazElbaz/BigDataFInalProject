@@ -53,9 +53,21 @@ const getConsumptionPrediction = async (req, res) => {
     const {store: storeName, flavor: flavor, date: date} = req.params;
     const modelResourceKey = await getModelResourceKey();
 
-    console.log(storeName + ' ' + flavor + ' ' + date)
-    const prediction_value = await getPredictionPromise(modelResourceKey, storeName, flavor, date);
-    res.status(200).json({response: prediction_value});
+    // request
+    let fetchObj = await fetch(`http://localhost:5000/api/v1/additional_info/${storeName}`);
+    if (!fetchObj.ok) throw new Error(`Error! status: ${fetchObj.status}`);
+    const additionalInfoJSON = await fetchObj.json();
+
+    let fetchObj2 = await fetch(`http://localhost:5000/api/v1/city_details/${storeName}`);
+    if (!fetchObj2.ok) throw new Error(`Error! status: ${fetchObj2.status}`);
+    const cityInfoJSON = await fetchObj2.json();
+
+    const concatJSON = Object.assign({"city": storeName, "flavor": flavor, "date": date}, additionalInfoJSON['reponse'],
+        {'population_size': cityInfoJSON['reponse']['population_size'], 'population_type': cityInfoJSON['reponse']['population_type']})
+    console.log(concatJSON)
+
+    const prediction_value = await getPredictionPromise(modelResourceKey, concatJSON);
+    res.status(200).json({response: prediction_value, show_data: concatJSON});
 }
 
 module.exports = {

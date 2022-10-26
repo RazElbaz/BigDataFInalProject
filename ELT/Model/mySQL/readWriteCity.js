@@ -30,12 +30,6 @@ const getCityPopulation = async (cityName) => {
         const locality_code = cityLocalityCodeRows[0]['Locality Code'];
         const [cityPopulationRows, cityPopulationFields] = await promisePool.execute(getPopulation, [locality_code]);
         cityPopulationJSON = cityPopulationRows[0];
-        
-        // Convert population from decimal to precentages
-        var keys = Object.keys(cityPopulationJSON);
-        for(let i = 0; i < keys.length - 1; i++){
-            cityPopulationJSON[keys[i]] = `${cityPopulationJSON[keys[i]] * 100}%`;
-        }
     } catch (err) {
         console.log(err);
     }
@@ -48,8 +42,7 @@ const getCityPopulationType = async (cityName) => {
         const [cityLocalityCodeRows, cityLocalityCodeFields] = await promisePool.execute(getLocalityCode, [cityName]);
         const locality_code = cityLocalityCodeRows[0]['Locality Code'];
         const [cityLocalityReligionRows, cityLocalityReligionFields] = await promisePool.execute(getLocalityReligion, [locality_code])
-        cityPopulationType = populationTypeMap[cityLocalityReligionRows[0]['Locality religion']];
-        console.log(cityLocalityReligionRows[0])
+        cityPopulationType = cityLocalityReligionRows[0]['Locality religion']
     } catch (err) {
         console.log(err);
     }

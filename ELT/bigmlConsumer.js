@@ -60,7 +60,7 @@ consumer.on('event.error', function(err) {
 const startConsumer = async () => {
     try {
         await connectDB();
-        //consumer.connect();
+        consumer.connect();
     } catch (error) {
         console.log(error);
     }
