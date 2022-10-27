@@ -8,19 +8,19 @@ A system made up of three sub-systems which together allow near real time monito
 
 
 ## Tasks:
-#The three subsystems:
+# The three subsystems:
 
-Subsystem A: Sales simulator
+** Subsystem A: Sales simulator **
 An operational subsystem to be displayed by a simulator that sends messages to an intermediary with sales data
 
-Subsystem B: Dashboards and real-time data.
+** Subsystem B: Dashboards and real-time data. **
 
 o The subsystem will store in a Redis type database the status of each flavor
 Ice cream in each of the branches.
 
 o One of the screens will be used to request the learning of a model from subsystem C (which will prepare a data set and transfer it to BigML) Also, on the same screen it will be possible to forecast ice cream consumption in a certain branch, on a certain date for a certain ice cream flavor
 
-Subsystem C: Historical and background data storage subsystem responsible for the ELT process (Extract, Load, Transform)
+**Subsystem C: Historical and background data storage subsystem responsible for the ELT process (Extract, Load, Transform)**
 
 o The subsystem will store in a MySQL database details about the settlements and their characteristics.
 
