@@ -60,10 +60,15 @@ from the following data:
      •The weather that day (very hot, hot, pleasant, cold, very cold)
 
      • Consumption level (for every taste):
+
       o Zero (under a kilo)
+
       o small (up to 20 kilos)
+
       o Medium (up to 60 kilos)
+
       o tall (up to 120 kilos)
+
       o very tall (over 120 kilos)
 
      • The size of the settlement (only eight values ​​are enough, you can group values ​​and define a scale Serial ).
