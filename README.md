@@ -70,6 +70,8 @@ from the following data:
 
      • The type of population (Jews, Arabs, mixed).
      
+     • Age groups in the locality (can be translated into percentages and ranked as you wish):
+     
       o toddler (ages 0-5)
       
       o Children and youth (ages 6-18)
