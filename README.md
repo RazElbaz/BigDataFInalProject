@@ -69,11 +69,17 @@ from the following data:
      • The size of the settlement (only eight values ​​are enough, you can group values ​​and define a scale Serial ).
 
      • The type of population (Jews, Arabs, mixed).
+     
       o toddler (ages 0-5)
+      
       o Children and youth (ages 6-18)
+      
       o adults (age 19-45)
+      
       o adults (46-55) 
+      
       o middle age (56-64)  
+      
       o elderly (65 and above)
 
 
