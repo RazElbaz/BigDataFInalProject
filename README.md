@@ -30,6 +30,7 @@ In settlement and inquiry about a holiday in the coming week from network servic
 o Given an instruction, the system prepares a data set, adds to each sales event the characteristics of the locality and turns to the Com.BigML service to create a decision tree-type predictive model. 
 
 Functional requirements:
+
 1. Ice cream chain offers five flavors of ice cream: chocolate, vanilla, strawberry, lemon and halva.
 2. The system will collect the branch data and their characteristics (at least 100 branches):
 
