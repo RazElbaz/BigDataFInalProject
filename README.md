@@ -89,6 +89,7 @@ from the following data:
       
       o elderly (65 and above)
 
+![alt text](https://github.com/RazElbaz/BigDataFInalProject/blob/main/BigData.png) 
 
 ##  Run:
 
