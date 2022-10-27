@@ -86,10 +86,11 @@ from the following data:
 
 
 ##  Run:
-Download node_modules with: npm i app
 
-remove export default m;
+Download node_modules with: **npm i app**
+Enter the Dashboard server folder (with cd) and run: **node ./server.js .**
+Run the producer from the dashboard folder: **npm run start:p**
+Start the bigML server by entering the ELT folder and then: **node ./server.js**
+Run the consumer: **node ./bigmlConsumer**
 
-open terminal 1: npm run start:c
 
-open terminal 2: npm run start:p
