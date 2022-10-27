@@ -32,28 +32,42 @@ o Given an instruction, the system prepares a data set, adds to each sales event
 Functional requirements:
 1. Ice cream chain offers five flavors of ice cream: chocolate, vanilla, strawberry, lemon and halva.
 2. The system will collect the branch data and their characteristics (at least 100 branches):
+
 • branch name
+
 • Locality
+
 • Owner details
+
 • Current stock for every ice cream flavor
+
 3. The system will display in real time through a dashboard and full appropriate graphs of each of the flavors
 In each branch (Chart Bar), the total stock of flavors in all branches (Chart Pie) and forecast
 Sales of a certain branch for a certain flavor for the coming week.
+
 4. The system will make it possible to learn from past data on the consumption of ice cream flavors and create a future consumption forecast
 from the following data:
+
 • day in the week
+
 • a month
+
 • Answers
+
 • Is it a holiday week
-The weather that day (very hot, hot, pleasant, cold, very cold)
+
+•The weather that day (very hot, hot, pleasant, cold, very cold)
+
 • Consumption level (for every taste):
   o Zero (under a kilo)
   o small (up to 20 kilos)
   o Medium (up to 60 kilos)
   o tall (up to 120 kilos)
   o very tall (over 120 kilos)
+  
 • The size of the settlement (only eight values ​​are enough, you can group values ​​and define a scale
-Serial (.
+Serial ).
+
 • The type of population (Jews, Arabs, mixed).
   o toddler (ages 0-5)
   o Children and youth (ages 6-18)
